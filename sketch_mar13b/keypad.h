@@ -1,5 +1,4 @@
 
-
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
@@ -12,6 +11,11 @@
 
 
 #define OLED 1
+
+#define ENCODER_ON 1
+#define ENCODER_DT 20
+#define ENCODER_CLK 21
+#define ENCODER_SW 19
 
 extern int keymap[ROWS][COLS];  // Declare the keymap variable
 

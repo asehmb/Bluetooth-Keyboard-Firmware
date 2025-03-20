@@ -8,9 +8,10 @@
 #include "keypad.h"
 #include "oled_driver.h"
 #include "hid_report.h"
+// #include "encoder.h"
 
 // get pin numbers from header
-int rowPins[] = ROW_PINS;
+int rowPins[] = ROW_PINS; 
 int colPins[] = COL_PINS;
 
 
