@@ -15,6 +15,11 @@
 #define OLED_RESET    -1 // Reset pin # sahred with arduino reset
 #define SCREEN_ADDRESS 0x3C
 
+
 void oled_setup();
+void oled_update();
+void draw_bitmap(const unsigned char *bitmap);
+
+
 
 #endif

@@ -38,6 +38,7 @@ void setup() {
   // Initialize the OLED display
   #ifdef OLED
     oled_setup();
+    draw_bitmap(bitmap_array[0]);
   #endif
 }
 
@@ -76,4 +77,7 @@ void scan_keyboard() {
 
 void loop() {
   scan_keyboard();
+  #ifdef OLED
+    oled_update();
+  #endif
 }
