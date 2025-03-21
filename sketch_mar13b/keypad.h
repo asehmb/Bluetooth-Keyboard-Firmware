@@ -2,7 +2,9 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
+#include <Arduino.h>
 #include "usb_hid_keys.h"
+#include "hid_report.h"
 
 
 #define ROWS 6
@@ -18,10 +20,8 @@
 #define OLED_WIDTH 128
 #define OLED_HEIGHT 32
 
-#define ENCODER_ON
-#define ENCODER_DT 20
-#define ENCODER_CLK 21
-#define ENCODER_SW 19
+#define ENCODER
+#include "encoder.h"
 #define ENCODER_CW KEY_VOLUMEUP // clockwise
 #define ENCODER_CCW KEY_VOLUMEDOWN // couter-clockwise
 

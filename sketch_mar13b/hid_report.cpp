@@ -4,7 +4,7 @@
 HIDReport hidReport = {0};
 
 // Function to send the HID keypress report
-void sendHIDKey(byte key, bool keyState) {
+void sendHIDKey(byte key) {
     // Create the HID report for the keyboard
 
   hidReport.keys[key / 8] |= (1 << (key % 8));

@@ -4,16 +4,11 @@
  * and oled display support
  */
 
-#include "usb_hid_keys.h"
 #include "keypad.h"
-#include "oled_driver.h"
-#include "hid_report.h"
-// #include "encoder.h"
 
 // get pin numbers from header
 int rowPins[] = ROW_PINS; 
 int colPins[] = COL_PINS;
-
 
 
 // Variables for keypress detection
@@ -22,6 +17,8 @@ unsigned long lastDebounceTime = 0;     // Tracks the last debounce time
 
 
 void setup() {
+  Serial.begin(9600);
+  delay(200);
   // Initialize row pins as outputs
   for (int i = 0; i < ROWS; i++) {
     pinMode(rowPins[i], OUTPUT);
@@ -39,6 +36,10 @@ void setup() {
   #ifdef OLED
     oled_setup();
     draw_bitmap(bitmap_array[0]);
+  #endif
+
+  #ifdef ENCODER
+    encoder_setup();
   #endif
 }
 
@@ -60,7 +61,7 @@ void scan_keyboard() {
             if (keyState) {
               // Key pressed
               // Send the corresponding HID key
-              sendHIDKey(key, keyState);
+              sendHIDKey(key);
             } else {
               // Release all keys
               releaseKey(key);
@@ -75,9 +76,40 @@ void scan_keyboard() {
   }
 }
 
+unsigned long previousMillis = 0;  // Store last time the event was triggered
+const long interval = 4;  // The interval at which to run the action (in milliseconds)
+
 void loop() {
-  scan_keyboard();
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;  // Save the current time
+
+    scan_keyboard();
+
+  }
+
+  // Oled
   #ifdef OLED
     oled_update();
   #endif
+
+  // encoder
+  // #ifdef ENCODER        
+    int ret_val, click;
+    encoder_update(&ret_val, &click);
+    // Serial.println(ret_val);
+    if (ret_val == 1) {
+        Serial.print("CW");
+        sendHIDKey(ENCODER_CW);
+        // releaseKey(ENCODER_CW);
+    } else if (ret_val == 2) {
+        Serial.print("CCW");
+        sendHIDKey(ENCODER_CCW);
+        // releaseKey(ENCODER_CCW);
+    }
+  // #endif
+
+  delay(4);
+    
 }

@@ -2,7 +2,6 @@
 #ifndef HID_REPORT_H
 #define HID_REPORT_H
 
-#include <Arduino.h>
 #include <HID.h>
 
 // HID report structure for a keyboard
@@ -13,7 +12,7 @@ typedef struct {
 } HIDReport;
 
 void hid_start();
-void sendHIDKey(byte key, bool keyState);
+void sendHIDKey(byte key);
 void releaseAllKeys();
 void releaseKey(byte key);
 
