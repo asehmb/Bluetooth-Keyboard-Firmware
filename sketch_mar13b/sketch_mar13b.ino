@@ -95,20 +95,21 @@ void loop() {
   #endif
 
   // encoder
-  // #ifdef ENCODER        
+  #ifdef ENCODER        
     int ret_val, click;
     encoder_update(&ret_val, &click);
-    // Serial.println(ret_val);
-    if (ret_val == 1) {
-        Serial.print("CW");
-        sendHIDKey(ENCODER_CW);
-        // releaseKey(ENCODER_CW);
+          if (ret_val == 1) {
+        Serial.println("CW");
+        sendHIDKey(0xE9);
+        delay(100);
+        releaseKey(0xE9);
     } else if (ret_val == 2) {
-        Serial.print("CCW");
-        sendHIDKey(ENCODER_CCW);
-        // releaseKey(ENCODER_CCW);
+        Serial.println("CCW");
+        sendHIDKey(0xEA);
+        delay(100);
+        releaseKey(0xEA);
     }
-  // #endif
+  #endif
 
   delay(4);
     

@@ -15,7 +15,7 @@ int encoder_update(int * ret_val, int * click) {
   static int lastClock = HIGH;  // Static variable to remember last state of CLK pin
   static unsigned long lastDebounceTime = 0;  // For debouncing
   static unsigned long lastButtonPress = 0;  // For debouncing the button
-  const unsigned long debounceDelay = 50;  // Debounce time for encoder and button
+  const unsigned long debounceDelay = 100;  // Debounce time for encoder and button
   int currentClock = digitalRead(ENCODER_CLK);  // Current state of the encoder CLK
   int buttonState = digitalRead(ENCODER_SW);  // Read the button state
 

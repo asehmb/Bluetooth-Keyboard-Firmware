@@ -8,6 +8,8 @@ void sendHIDKey(byte key) {
     // Create the HID report for the keyboard
 
   hidReport.keys[key / 8] |= (1 << (key % 8));
+  Serial.print(key);
+  Serial.print(hidReport);
   // Send the HID report
   HID().SendReport(1, &hidReport, sizeof(hidReport));
 }
