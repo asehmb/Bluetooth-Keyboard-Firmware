@@ -10,7 +10,7 @@
 #define DEBOUNCE 4
 
 #define ROW_PINS {4, 5, 6, 7, 8, 9}
-#define COL_PINS {15, 14, 16, 10}
+#define COL_PINS {15, 14, 16,10}
 
 
 #define OLED // needed for oled

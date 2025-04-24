@@ -1,3 +1,9 @@
 Keyboard firmware
-Doesn't currently have bluetooth, looking to add it soon
-Proof of concept currently
+
+Bluetooth is a pro micro nrf 52840 (Nice!Nano clone) and uses the adafruit nrf52840 feather express variant
+
+WIRED MODE:
+only works wired
+
+BLUETOOTH MODE:
+only works in bluetooth

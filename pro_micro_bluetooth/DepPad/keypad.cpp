@@ -1,6 +1,19 @@
 #include "keypad.h"
 
 
+
+
+// right click any macro and go to definition to find all commands
+int keymap[6][4] = {
+    {HID_KEY_PAGE_DOWN, HID_KEY_PAGE_UP, HID_KEY_HOME, HID_KEY_INSERT},
+    {HID_KEY_NUM_LOCK, HID_KEY_KEYPAD_DIVIDE, HID_KEY_KEYPAD_MULTIPLY, HID_KEY_KEYPAD_SUBTRACT},
+    {HID_KEY_KEYPAD_7, HID_KEY_KEYPAD_8, HID_KEY_KEYPAD_9, HID_KEY_KEYPAD_ADD},
+    {HID_KEY_KEYPAD_4, HID_KEY_KEYPAD_5, HID_KEY_KEYPAD_6, 0},
+    {HID_KEY_KEYPAD_1, HID_KEY_KEYPAD_2, HID_KEY_KEYPAD_3, HID_KEY_KEYPAD_ENTER},
+    {HID_KEY_KEYPAD_0, 0, HID_KEY_KEYPAD_DECIMAL, 0}
+};
+
+
 // generated from https://javl.github.io/image2cpp/
 const unsigned char lebron_bitmap [] PROGMEM = {
 	// '2544, 128x32px
@@ -40,14 +53,5 @@ const unsigned char lebron_bitmap [] PROGMEM = {
 
 const unsigned char* bitmap_array[] = {
 	lebron_bitmap
-};
-
-int keymap[6][4] = {
-    {KEY_PAGEDOWN, KEY_PAGEUP, KEY_HOME, KEY_INSERT},
-    {KEY_NUMLOCK, KEY_KPSLASH, KEY_KPASTERISK, KEY_KPMINUS},
-    {KEY_KP7, KEY_KP8, KEY_KP9, KEY_KPPLUS},
-    {KEY_KP4, KEY_KP5, KEY_KP6, KEY_NONE},
-    {      , KEY_KP2, KEY_KP3, KEY_KPENTER},
-    {KEY_KP0, KEY_NONE, KEY_KPDOT, KEY_NONE}
 };
 
