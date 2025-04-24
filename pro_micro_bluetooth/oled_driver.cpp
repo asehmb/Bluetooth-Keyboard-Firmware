@@ -1,9 +1,11 @@
 
 #include "oled_driver.h"
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+#ifdef OLED
+
+Adafruit_SSD1306 display(OLED_WIDTH, OLED_HEIGHT, &Wire, OLED_RESET);
 void oled_setup() {
-    Wire.setPins(2, 3); // set correct pins to match with pro micro
+    Wire.setPins(OLED_SDA, OLED_SCK); // set correct pins to match with pro micro
     Wire.begin();  
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
         for (;;);
@@ -35,7 +37,7 @@ void oled_update() {
 
 void draw_bitmap(const unsigned char * bitmap) {
     display.clearDisplay();
-    display.drawBitmap(0,0, bitmap, 128, 32, WHITE);
+    display.drawBitmap(0,0, bitmap, OLED_WIDTH, OLED_HEIGHT, WHITE);
     oled_update();
 }
 
@@ -44,6 +46,9 @@ void oled_display_text(const char* text_to_display){
     display.setTextSize(1);      
     display.setTextColor(SSD1306_WHITE); 
     display.setCursor(0, 10);
-    display.print(F( text_to_display));
+    display.print(F(text_to_display));
     display.display();
 }
+
+
+#endif

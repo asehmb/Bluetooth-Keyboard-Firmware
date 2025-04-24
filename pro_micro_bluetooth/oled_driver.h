@@ -13,6 +13,13 @@
 #define OLED_RESET    -1
 #define SCREEN_ADDRESS 0x3C
 
+#ifndef OLED_SDA
+  #define OLED_SDA 2
+#endif
+
+#ifndef OLED_SCK
+  #define OLED_SCK 3
+#endif
 
 void oled_setup();
 void oled_display_text(const char* text_to_display);

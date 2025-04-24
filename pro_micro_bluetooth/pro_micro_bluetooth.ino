@@ -1,7 +1,14 @@
 
-// #include "oled_driver.h"
 
 #include "keypad.h"
+
+#ifdef OLED
+  #include "oled_driver.h"
+#endif
+
+#ifndef DEBOUNCE
+  #define DEBOUNCE 4
+#endif
 
 int rowPins[] = ROW_PINS; 
 int colPins[] = COL_PINS;
@@ -45,14 +52,10 @@ BLEHidAdafruit blehid;
 bool hasKeyPressed = false;
 
 void setup() {
-  oled_setup();
-  oled_display_text("Waiting for Serial");
-  Serial.begin(115200);
-  oled_display_text("Waiting for Serial");
-  while (!Serial) {delay(5);}
-  oled_display_text("Serial active; Continuing");
+  #ifdef OLED
+    oled_setup();
+  #endif
 
-  Serial.print("Serial on");
   delay(500);
 
   Bluefruit.begin();
