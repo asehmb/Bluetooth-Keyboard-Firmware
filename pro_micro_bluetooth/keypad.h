@@ -2,7 +2,8 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
-#include "usb_hid_keys.h"
+#include <bluefruit.h>
+
 
 
 #define ROWS 6
@@ -10,13 +11,10 @@
 #define DEBOUNCE 4
 
 #define ROW_PINS {4, 5, 6, 7, 8, 9}
-#define COL_PINS {15, 14, 16, 10}
+#define COL_PINS {13,12,11,10}
 
 
 
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 
 #define OLED // needed for oled
 #include "oled_driver.h"

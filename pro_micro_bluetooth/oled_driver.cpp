@@ -38,3 +38,12 @@ void draw_bitmap(const unsigned char * bitmap) {
     display.drawBitmap(0,0, bitmap, 128, 32, WHITE);
     oled_update();
 }
+
+void oled_display_text(const char* text_to_display){
+    display.clearDisplay();
+    display.setTextSize(1);      
+    display.setTextColor(SSD1306_WHITE); 
+    display.setCursor(0, 10);
+    display.print(F( text_to_display));
+    display.display();
+}
